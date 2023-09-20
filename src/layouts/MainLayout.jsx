@@ -16,7 +16,7 @@ const MainLayout = () => {
           <NavLink to="/about">About</NavLink>
         </nav>
       </section>
-      <div className="min-h-screen">
+      <div className="min-h-screen p-6 max-w-[1440px] mx-auto">
         <Outlet></Outlet>
       </div>
       <footer className="flex justify-between bg-slate-800 text-white px-10 py-7 shadow-md mt-6">
