@@ -1,8 +1,24 @@
 import { Spinner } from 'flowbite-react';
-import { NavLink, Outlet, useNavigation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, Outlet, useLocation, useNavigation } from 'react-router-dom';
 
 const MainLayout = () => {
   const navigation = useNavigation();
+  const loc = useLocation();
+  // console.log(location);
+  useEffect(() => {
+    console.log('useEffect loc', loc);
+
+    if (loc.pathname === '/') {
+      document.title = `Amazon - home`;
+    } else {
+      document.title = `Amazon ${loc.pathname.replace('/', '- ')}`;
+    }
+
+    if (loc.state) {
+      document.title = loc.state;
+    }
+  }, [loc.pathname, loc]);
   return (
     <div>
       <section className="flex justify-between px-10 shadow-md py-7">
