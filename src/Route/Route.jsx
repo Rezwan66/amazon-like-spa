@@ -4,6 +4,7 @@ import Home from '../pages/Home/Home';
 import Products from '../pages/Products/Products';
 import About from '../pages/About/About';
 import Dashboard from '../pages/Dashboard/Dashboard';
+import ProductDetails from '../pages/ProductDetails/ProductDetails';
 
 const myCreatedRoute = createBrowserRouter([
   {
@@ -18,6 +19,12 @@ const myCreatedRoute = createBrowserRouter([
         path: '/products',
         element: <Products></Products>,
         loader: () => fetch('https://dummyjson.com/products'),
+      },
+      {
+        path: '/product/:id',
+        element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) =>
+          fetch(`https://dummyjson.com/products/${params.id}`),
       },
       {
         path: '/dashboard',
