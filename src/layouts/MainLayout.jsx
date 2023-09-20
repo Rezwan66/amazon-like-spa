@@ -1,7 +1,8 @@
+import { Spinner } from 'flowbite-react';
 import { NavLink, Outlet, useNavigation } from 'react-router-dom';
 
 const MainLayout = () => {
-  const navigation = useNavigation;
+  const navigation = useNavigation();
   return (
     <div>
       <section className="flex justify-between px-10 shadow-md py-7">
@@ -18,13 +19,13 @@ const MainLayout = () => {
         </nav>
       </section>
 
-      <div className="min-h-screen p-6 max-w-[1440px] mx-auto">
-        {
-            navigation.state === "loading"?
-            :
-            <Outlet></Outlet>
-        }
-      </div>
+      {navigation.state === 'loading' ? (
+        <Spinner></Spinner>
+      ) : (
+        <div className="min-h-screen p-6 max-w-[1440px] mx-auto">
+          <Outlet></Outlet>
+        </div>
+      )}
 
       <footer className="flex justify-between bg-slate-800 text-white px-10 py-7 shadow-md mt-6">
         <aside className="items-center grid-flow-col">
